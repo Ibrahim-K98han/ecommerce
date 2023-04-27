@@ -1,4 +1,7 @@
+import 'package:ecommerce/ui/screens/home_screen.dart';
+import 'package:ecommerce/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -8,6 +11,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Future.delayed(Duration(seconds: 2)).then((value) {
+      Get.to(const HomeScreen());
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +32,16 @@ class _SplashScreenState extends State<SplashScreen> {
           ))),
           Column(
             children: const [
-              CircularProgressIndicator(),
+              CircularProgressIndicator(
+                color: primaryColor,
+              ),
               Padding(
                 padding: EdgeInsets.all(16),
-                child: Text('Version 1.0'),
+                child: Text(
+                  'Version 1.0',
+                  style: TextStyle(
+                      color: greyColor, fontSize: 12, letterSpacing: 0.8),
+                ),
               )
             ],
           )
