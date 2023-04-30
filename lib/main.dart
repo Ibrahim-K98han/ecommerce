@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'ui/screens/email_verification_screen.dart';
 import 'ui/screens/splash_screen.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class CraftyBay extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen()
+      home: const EmailVerificationScreen()
     );
   }
 }
