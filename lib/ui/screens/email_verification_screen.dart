@@ -2,6 +2,8 @@ import 'package:ecommerce/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/styles.dart';
+import '../widgets/common_elevated_button.dart';
+import '../widgets/commont_text_field.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({Key? key}) : super(key: key);
@@ -32,12 +34,27 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
             SizedBox(
               height: 4,
             ),
-            Text(
-              'Please Enter Your Email Address',
-              style: subTileTextStyle,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: Text(
+                'Please Enter Your Email Address',
+                style: subTileTextStyle,
+              ),
             ),
-            CommonTextField(
-              controller: TextEditingController(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: CommonTextField(
+                controller: TextEditingController(),
+                hintText: 'Email Address',
+                textInputType: TextInputType.emailAddress,
+                validator: (String? value) {
+                  Text("Please Enter Email");
+                },
+              ),
+            ),
+            CommonElevatedButton(
+              title: 'NEXt',
+              onTap: (){},
             )
           ],
         ),
@@ -46,33 +63,3 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   }
 }
 
-class CommonTextField extends StatelessWidget {
-   CommonTextField({
-    Key? key, required this.controller,
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  final Function(String?) validator;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      validator: (value){
-
-      },
-      decoration: const InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-        border: OutlineInputBorder(
-          borderSide: BorderSide(color: primaryColor, width: 2),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: primaryColor, width: 2),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: primaryColor, width: 2),
-        ),
-      ),
-    );
-  }
-}
