@@ -1,21 +1,17 @@
-import 'package:ecommerce/ui/screens/otp_verification_screen.dart';
-import 'package:ecommerce/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../utils/styles.dart';
 import '../widgets/common_elevated_button.dart';
 import '../widgets/commont_text_field.dart';
 
-class EmailVerificationScreen extends StatefulWidget {
-  const EmailVerificationScreen({Key? key}) : super(key: key);
+class OTPVerificationScreen extends StatefulWidget {
+  const OTPVerificationScreen({Key? key}) : super(key: key);
 
   @override
-  State<EmailVerificationScreen> createState() =>
-      _EmailVerificationScreenState();
+  State<OTPVerificationScreen> createState() => _OTPVerificationScreenState();
 }
 
-class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
+class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,14 +28,14 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
             SizedBox(
               height: 16,
             ),
-            Text('Welcome Back', style: titleTextStyle),
+            Text('Enter OTP Code', style: titleTextStyle),
             SizedBox(
               height: 4,
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 16),
+              padding:  EdgeInsets.only(bottom: 16),
               child: Text(
-                'Please Enter Your Email Address',
+                'A 4 digit OTP code has been send' ,
                 style: subTileTextStyle,
               ),
             ),
@@ -56,9 +52,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
             ),
             CommonElevatedButton(
               title: 'NEXt',
-              onTap: (){
-                Get.to(OTPVerificationScreen());
-              },
+              onTap: (){},
             )
           ],
         ),
@@ -66,4 +60,3 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     );
   }
 }
-
