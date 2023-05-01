@@ -9,16 +9,19 @@ class CommonTextField extends StatelessWidget {
     required this.validator,
     required this.hintText,
     this.textInputType,
+    this.maxLine,
   }) : super(key: key);
 
   final TextEditingController controller;
   final Function(String?) validator;
   final String hintText;
   final TextInputType? textInputType;
+  final int? maxLine;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLine,
       controller: controller,
       keyboardType: textInputType,
       validator: (value) {
