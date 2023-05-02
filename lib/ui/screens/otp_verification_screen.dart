@@ -44,15 +44,15 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.only(bottom: 16),
-                child: PinCodeTextField(
-                  length: 4,
-                  obscureText: false,
-                  animationType: AnimationType.fade,
-                  keyboardType: TextInputType.number,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  controller: TextEditingController(),
-                  pinTheme: PinTheme(
+              padding: EdgeInsets.only(bottom: 16),
+              child: PinCodeTextField(
+                length: 4,
+                obscureText: false,
+                animationType: AnimationType.fade,
+                keyboardType: TextInputType.number,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                controller: TextEditingController(),
+                pinTheme: PinTheme(
                     shape: PinCodeFieldShape.box,
                     borderRadius: BorderRadius.circular(8),
                     fieldHeight: 50,
@@ -62,26 +62,38 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                     selectedColor: Colors.green,
                     activeColor: primaryColor,
                     inactiveColor: primaryColor,
-                    inactiveFillColor: Colors.white
-                  ),
-                  animationDuration: Duration(milliseconds: 300),
-                  enableActiveFill: true,
-                  onCompleted: (v) {
-                  },
-                  onChanged: (value) {},
-                  appContext: context,
-                )),
-            CommonElevatedButton(
-              title: 'NEXt',
-              onTap: () {
-                Get.to(CompleteProfileScreen());
-              },
+                    inactiveFillColor: Colors.white),
+                animationDuration: const Duration(milliseconds: 300),
+                enableActiveFill: true,
+                onCompleted: (v) {},
+                onChanged: (value) {},
+                appContext: context,
+              ),
             ),
+            // CommonElevatedButton(
+            //   title: 'NEXt',
+            //   onTap: () {
+            //     Get.to(
+            //       const CompleteProfileScreen(),
+            //     );
+            //   },
+            // ),
             SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Get.to(
+                    const CompleteProfileScreen(),
+                  );
+                },
+                child: const Text('Next'),
+              ),
+            ),
+            const SizedBox(
               height: 16,
             ),
             RichText(
-              text: TextSpan(
+              text: const TextSpan(
                 style: TextStyle(fontSize: 13, color: softGreyColor),
                 text: 'This code will be expire in',
                 children: [

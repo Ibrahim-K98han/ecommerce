@@ -1,6 +1,6 @@
+import 'package:ecommerce/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'ui/screens/email_verification_screen.dart';
 import 'ui/screens/splash_screen.dart';
 
 void main() {
@@ -14,10 +14,27 @@ class CraftyBay extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.dark,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: primaryColor,
+            textStyle: const TextStyle(
+                fontWeight: FontWeight.w400, letterSpacing: 0.6),
+          ),
+        ),
       ),
-      home: const SplashScreen()
+      darkTheme: ThemeData(
+        brightness: Brightness.light,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: primaryColor,
+            textStyle: const TextStyle(
+                fontWeight: FontWeight.w400, letterSpacing: 0.6),
+          ),
+        ),
+      ),
+      home: const SplashScreen(),
     );
   }
 }
