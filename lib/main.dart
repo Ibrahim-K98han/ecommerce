@@ -16,6 +16,7 @@ class CraftyBay extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(color: Colors.white, elevation: 1),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: primaryColor,
@@ -24,16 +25,16 @@ class CraftyBay extends StatelessWidget {
           ),
         ),
       ),
-      darkTheme: ThemeData(
-        brightness: Brightness.light,
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: primaryColor,
-            textStyle: const TextStyle(
-                fontWeight: FontWeight.w400, letterSpacing: 0.6),
-          ),
-        ),
-      ),
+      // darkTheme: ThemeData(
+      //   brightness: Brightness.light,
+      //   elevatedButtonTheme: ElevatedButtonThemeData(
+      //     style: ElevatedButton.styleFrom(
+      //       backgroundColor: primaryColor,
+      //       textStyle: const TextStyle(
+      //           fontWeight: FontWeight.w400, letterSpacing: 0.6),
+      //     ),
+      //   ),
+      // ),
       home: const SplashScreen(),
     );
   }
