@@ -1,7 +1,7 @@
 import 'package:ecommerce/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/app_bar_icon_button.dart';
+import '../widgets/home/app_bar_icon_button.dart';
+import '../widgets/home/home_carousel_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -59,7 +59,10 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
+            const SizedBox(
+              height: 16,
+            ),
+            HomeCarouselWidget(),
           ],
         ),
       ),
