@@ -1,7 +1,8 @@
-import 'package:ecommerce/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../widgets/home/app_bar_icon_button.dart';
 import '../widgets/home/home_carousel_widget.dart';
+import '../widgets/home/remarks_title_widget.dart';
+import '../widgets/home/search_text_field.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -35,34 +36,18 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            TextField(
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.search,
-              onSubmitted: (value) {},
-              decoration: InputDecoration(
-                hintStyle: const TextStyle(color: softGreyColor),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                fillColor: softGreyColor.withOpacity(0.1),
-                filled: true,
-                hintText: 'Search',
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: softGreyColor,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 16),
+              child: SearchTextField(),
             ),
-            const SizedBox(
-              height: 16,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: HomeCarouselWidget(),
             ),
-            HomeCarouselWidget(),
+            RemarkTitleWidget(
+              remarkName: 'Categories',
+              onTapSeeAll: () {},
+            ),
           ],
         ),
       ),
