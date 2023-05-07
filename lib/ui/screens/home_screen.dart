@@ -1,5 +1,6 @@
 import 'package:ecommerce/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import '../widgets/category_card_widget.dart';
 import '../widgets/home/app_bar_icon_button.dart';
 import '../widgets/home/home_carousel_widget.dart';
 import '../widgets/home/remarks_title_widget.dart';
@@ -57,10 +58,10 @@ class HomeScreen extends StatelessWidget {
                     categoryName: 'Computer',
                   ),
                   CategoryCard(
-                    categoryName: 'Computer',
+                    categoryName: 'Electronics',
                   ),
                   CategoryCard(
-                    categoryName: 'Computer',
+                    categoryName: 'Cloth',
                   ),
                   CategoryCard(
                     categoryName: 'Computer',
@@ -84,45 +85,4 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class CategoryCard extends StatelessWidget {
-  CategoryCard({
-    Key? key,
-    required this.categoryName,
-  }) : super(key: key);
 
-  final String categoryName;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 8, left: 5, right: 5),
-          child: Container(
-            decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8)),
-            child: const Padding(
-              padding: EdgeInsets.all(16),
-              child: Icon(
-                Icons.computer,
-                size: 28,
-                color: primaryColor,
-              ),
-            ),
-          ),
-        ),
-        Text(
-          categoryName,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              fontWeight: FontWeight.w500,
-              color: primaryColor,
-              letterSpacing: 0.6,
-              fontSize: 12),
-        ),
-      ],
-    );
-  }
-}
