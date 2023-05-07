@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../utils/app_colors.dart';
 
-class CategoryCard extends StatelessWidget {
-  CategoryCard({
+class CategoryCardWidget extends StatelessWidget {
+  CategoryCardWidget({
     Key? key,
     required this.categoryName,
   }) : super(key: key);
@@ -35,7 +35,7 @@ class CategoryCard extends StatelessWidget {
           categoryName,
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w400,
               color: primaryColor,
               letterSpacing: 0.6,
               fontSize: 12),

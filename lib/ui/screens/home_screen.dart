@@ -54,30 +54,37 @@ class HomeScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  CategoryCard(
+                  CategoryCardWidget(
                     categoryName: 'Computer',
                   ),
-                  CategoryCard(
+                  CategoryCardWidget(
                     categoryName: 'Electronics',
                   ),
-                  CategoryCard(
+                  CategoryCardWidget(
                     categoryName: 'Cloth',
                   ),
-                  CategoryCard(
+                  CategoryCardWidget(
                     categoryName: 'Computer',
                   ),
-                  CategoryCard(
+                  CategoryCardWidget(
                     categoryName: 'Computer',
                   ),
-                  CategoryCard(
+                  CategoryCardWidget(
                     categoryName: 'Computer',
                   ),
-                  CategoryCard(
+                  CategoryCardWidget(
                     categoryName: 'Computer',
                   ),
                 ],
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: RemarkTitleWidget(
+                remarkName: 'Popular',
+                onTapSeeAll: () {},
+              ),
+            ),
           ],
         ),
       ),
