@@ -5,6 +5,7 @@ import '../widgets/home/app_bar_icon_button.dart';
 import '../widgets/home/home_carousel_widget.dart';
 import '../widgets/home/remarks_title_widget.dart';
 import '../widgets/home/search_text_field.dart';
+import '../widgets/product_card_widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -36,60 +37,73 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: 16),
-              child: SearchTextField(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: HomeCarouselWidget(),
-            ),
-            RemarkTitleWidget(
-              remarkName: 'Categories',
-              onTapSeeAll: () {},
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  CategoryCardWidget(
-                    categoryName: 'Computer',
-                  ),
-                  CategoryCardWidget(
-                    categoryName: 'Electronics',
-                  ),
-                  CategoryCardWidget(
-                    categoryName: 'Cloth',
-                  ),
-                  CategoryCardWidget(
-                    categoryName: 'Computer',
-                  ),
-                  CategoryCardWidget(
-                    categoryName: 'Computer',
-                  ),
-                  CategoryCardWidget(
-                    categoryName: 'Computer',
-                  ),
-                  CategoryCardWidget(
-                    categoryName: 'Computer',
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(bottom: 16),
+                child: SearchTextField(),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: RemarkTitleWidget(
-                remarkName: 'Popular',
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: HomeCarouselWidget(),
+              ),
+              RemarkTitleWidget(
+                remarkName: 'Categories',
                 onTapSeeAll: () {},
               ),
-            ),
-          ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    CategoryCardWidget(
+                      categoryName: 'Computer',
+                    ),
+                    CategoryCardWidget(
+                      categoryName: 'Electronics',
+                    ),
+                    CategoryCardWidget(
+                      categoryName: 'Cloth',
+                    ),
+                    CategoryCardWidget(
+                      categoryName: 'Computer',
+                    ),
+                    CategoryCardWidget(
+                      categoryName: 'Computer',
+                    ),
+                    CategoryCardWidget(
+                      categoryName: 'Computer',
+                    ),
+                    CategoryCardWidget(
+                      categoryName: 'Computer',
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: RemarkTitleWidget(
+                  remarkName: 'Popular',
+                  onTapSeeAll: () {},
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ProductCard(),
+                    ProductCard(),
+                    ProductCard(),
+                    ProductCard(),
+                    ProductCard()
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
 
