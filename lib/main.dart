@@ -16,7 +16,15 @@ class CraftyBay extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(color: Colors.white, elevation: 1),
+        appBarTheme: const AppBarTheme(
+            color: Colors.white,
+            elevation: 1,
+          titleTextStyle: TextStyle(
+            color: greyColor,
+            fontWeight: FontWeight.w500,
+            fontSize: 18
+          ),
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: primaryColor,
