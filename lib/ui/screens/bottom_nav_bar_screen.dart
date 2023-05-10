@@ -10,9 +10,6 @@ import 'package:get/get.dart';
 class BottomNavBarScreen extends StatelessWidget {
    BottomNavBarScreen({Key? key}) : super(key: key);
 
-  final BottomNavigationBarController _navigationBarController =
-      Get.put(BottomNavigationBarController());
-
   final List<Widget> _screen = const [
     HomeScreen(),
     CategoryScreen(),

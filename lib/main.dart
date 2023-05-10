@@ -1,3 +1,4 @@
+import 'package:ecommerce/ui/state_management/bottom_navigation_bar_controller.dart';
 import 'package:ecommerce/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,17 +14,15 @@ class CraftyBay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: GetxBindings(),
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-            color: Colors.white,
-            elevation: 1,
+          color: Colors.white,
+          elevation: 1,
           titleTextStyle: TextStyle(
-            color: greyColor,
-            fontWeight: FontWeight.w500,
-            fontSize: 18
-          ),
+              color: greyColor, fontWeight: FontWeight.w500, fontSize: 18),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -45,5 +44,12 @@ class CraftyBay extends StatelessWidget {
       // ),
       home: const SplashScreen(),
     );
+  }
+}
+
+class GetxBindings extends Bindings {
+  @override
+  void dependencies() {
+    Get.put( BottomNavigationBarController());
   }
 }

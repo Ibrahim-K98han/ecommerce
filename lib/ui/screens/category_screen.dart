@@ -15,9 +15,7 @@ class CategoryScreen extends StatelessWidget {
         title: Text('Categories'),
         leading: IconButton(
           onPressed: () {
-            final BottomNavigationBarController navigationBarController =
-            Get.put(BottomNavigationBarController());
-            navigationBarController.backToHome();
+            Get.find<BottomNavigationBarController>().backToHome();
           },
           icon: Icon(
             Icons.arrow_back_ios_new,
