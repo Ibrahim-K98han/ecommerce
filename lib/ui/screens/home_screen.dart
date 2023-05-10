@@ -98,7 +98,45 @@ class HomeScreen extends StatelessWidget {
                     ProductCard()
                   ],
                 ),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: RemarkTitleWidget(
+                  remarkName: 'Special',
+                  onTapSeeAll: () {},
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ProductCard(),
+                    ProductCard(),
+                    ProductCard(),
+                    ProductCard(),
+                    ProductCard()
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: RemarkTitleWidget(
+                  remarkName: 'New',
+                  onTapSeeAll: () {},
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ProductCard(),
+                    ProductCard(),
+                    ProductCard(),
+                    ProductCard(),
+                    ProductCard()
+                  ],
+                ),
+              ),
             ],
           ),
         ),
