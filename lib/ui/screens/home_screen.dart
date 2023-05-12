@@ -1,4 +1,5 @@
-import 'package:ecommerce/ui/utils/app_colors.dart';
+import 'package:ecommerce/ui/state_management/bottom_navigation_bar_controller.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../widgets/category_card_widget.dart';
 import '../widgets/home/app_bar_icon_button.dart';
@@ -50,7 +51,9 @@ class HomeScreen extends StatelessWidget {
               ),
               RemarkTitleWidget(
                 remarkName: 'Categories',
-                onTapSeeAll: () {},
+                onTapSeeAll: () {
+                  Get.find<BottomNavigationBarController>().changeIndex(1);
+                },
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -144,4 +147,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
