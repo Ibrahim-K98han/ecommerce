@@ -14,6 +14,26 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  List<Color> colors = [
+    Color(0xFF000000),
+    Color(0xFFC43838),
+    Color(0xFF936209),
+    Color(0xFF4FA217),
+    Color(0xFF10B489),
+    Color(0xFF801377)
+  ];
+
+  List<String> sizes = [
+    'S',
+    'L',
+    'XL',
+    'XXL',
+    'XXXL',
+  ];
+
+  Color _selectedColor = Color(0xFF000000);
+  String _selectedSize = 'L';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +50,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -97,10 +118,109 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ],
                       ),
                     ),
-                    const ProductStepper()
+                    const ProductStepper(),
                   ],
                 ),
-                Text('Colors'),
+                SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  'Colors',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: greyColor,
+                      fontWeight: FontWeight.w600),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  children: colors.map((color) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(12),
+                        onTap: () {
+                          if (_selectedColor != color) {
+                            _selectedColor = color;
+                            if (mounted) {
+                              setState(() {});
+                            }
+                          }
+                        },
+                        child: CircleAvatar(
+                          backgroundColor: color,
+                          radius: 16,
+                          child: Visibility(
+                              visible: color == _selectedColor,
+                              child: Icon(
+                                Icons.check,
+                                color: Colors.white,
+                              )),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  'Size',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: greyColor,
+                      fontWeight: FontWeight.w600),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  children: sizes.map((size) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(12),
+                        onTap: () {
+                          if (_selectedSize != size) {
+                            _selectedSize = size;
+                            if (mounted) {
+                              setState(() {});
+                            }
+                          }
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              border: Border.all(color: greyColor),
+                              color:
+                                  size == _selectedSize ? primaryColor : null),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              size,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: size == _selectedSize
+                                      ? Colors.white
+                                      : null),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  'Description',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: greyColor,
+                      fontWeight: FontWeight.w600),
+                ),
               ],
             ),
           )
