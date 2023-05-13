@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 import '../widgets/product_details/product_image_carousel.dart';
+import '../widgets/product_stepper.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({Key? key}) : super(key: key);
@@ -13,8 +14,6 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  int _currentValue = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,87 +27,83 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ProdcutImageCarousel(),
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Row(
                   children: [
-                    Text(
-                      'Additas Casula Shoe s4657 Brand new',
-                      style: titleTextStyle.copyWith(
-                        fontSize: 18,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Additas Casula Shoe s4657 Brand new',
+                            style: titleTextStyle.copyWith(
+                              fontSize: 18,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Wrap(
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 16,
+                                  ),
+                                  Text(
+                                    '4.5',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500,
+                                        color: softGreyColor),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'Reviews',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: primaryColor),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 4,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: primaryColor,
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: Padding(
+                                  padding: EdgeInsets.all(4.0),
+                                  child: Icon(
+                                    Icons.favorite_border,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.star,
-                              color: Colors.amber,
-                              size: 16,
-                            ),
-                            Text(
-                              '4.5',
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: softGreyColor),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Reviews',
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: primaryColor),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 4,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: primaryColor,
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Padding(
-                            padding: EdgeInsets.all(4.0),
-                            child: Icon(
-                              Icons.favorite_border,
-                              size: 16,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    const ProductStepper()
                   ],
                 ),
-              ),
-              Wrap(
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.add),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.remove),
-                  )
-                ],
-              )
-            ],
-          ),
-          Text('Colors')
+                Text('Colors'),
+              ],
+            ),
+          )
         ],
       ),
     );
