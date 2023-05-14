@@ -1,4 +1,4 @@
-
+import 'package:ecommerce/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductStepper extends StatefulWidget {
@@ -11,63 +11,58 @@ class ProductStepper extends StatefulWidget {
 class _ProductStepperState extends State<ProductStepper> {
   int _currentValue = 1;
   final TextEditingController _stepperTEController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return  Wrap(
+    return Wrap(
       children: [
-        SizedBox(
-          width: 30,
-          height: 30,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.zero,
-            ),
-            onPressed: () {
-              if (_currentValue > 1) {
-                _currentValue--;
-                _stepperTEController.text = _currentValue.toString();
-              }
-            },
-            child: Icon(
-              Icons.remove,
-              size: 16,
-            ),
-          ),
-        ),
+        stepperButton(() {
+          if (_currentValue > 1) {
+            _currentValue--;
+            _stepperTEController.text = _currentValue.toString();
+          }
+        }, Icons.remove),
         SizedBox(
           width: 50,
           height: 30,
           child: TextField(
             controller: _stepperTEController,
             enabled: false,
-            style:
-            TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                )),
+              borderSide: BorderSide.none,
+            )),
           ),
         ),
-        SizedBox(
-          width: 30,
-          height: 30,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.zero
-            ),
-            onPressed: () {
-              if (_currentValue < 20) {
-                _currentValue++;
-                _stepperTEController.text = _currentValue.toString();
-              }
-            },
-            child: Icon(
-              Icons.add,
-              size: 16,
-            ),
-          ),
-        ),
+        stepperButton(() {
+          if (_currentValue < 20) {
+            _currentValue++;
+            _stepperTEController.text = _currentValue.toString();
+          }
+        }, Icons.add),
       ],
+    );
+  }
+
+  Widget stepperButton(VoidCallback onTap, IconData iconData) {
+    return SizedBox(
+      width: 30,
+      height: 30,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          decoration: BoxDecoration(
+            color: primaryColor,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Icon(
+            iconData,
+            size: 16,
+            color: Colors.white,
+          ),
+        ),
+      ),
     );
   }
 }
