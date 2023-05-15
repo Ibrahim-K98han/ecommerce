@@ -1,3 +1,4 @@
+import 'package:ecommerce/ui/screens/email_verification_screen.dart';
 import 'package:ecommerce/ui/state_management/bottom_navigation_bar_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,11 @@ class HomeScreen extends StatelessWidget {
             const Spacer(),
             AppBarIconButton(
               iconData: Icons.person,
-              onTap: () {},
+              onTap: () {
+                Get.to(
+                  const EmailVerificationScreen(),
+                );
+              },
             ),
             AppBarIconButton(
               iconData: Icons.call,
