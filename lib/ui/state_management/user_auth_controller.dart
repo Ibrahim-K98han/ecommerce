@@ -8,7 +8,7 @@ class UserAuthController extends GetxController {
     _emailVerificationInProgress = true;
 
     update();
-    final response = await NetworkCaller.getRequest(url: 'UserLogin/$email');
+    final response = await NetworkCaller.getRequest(url: '/UserLogin/$email');
     _emailVerificationInProgress = false;
     if (response.isSuccess) {
       update();

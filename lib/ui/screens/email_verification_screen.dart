@@ -18,6 +18,7 @@ class EmailVerificationScreen extends StatefulWidget {
 
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   final TextEditingController _emailETController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,61 +26,69 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
       body: GetBuilder<UserAuthController>(builder: (authController) {
         return Padding(
           padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/images/logo.png',
-                height: 80,
-                width: 80,
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Text('Welcome Back', style: titleTextStyle),
-              SizedBox(
-                height: 4,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: Text(
-                  'Please Enter Your Email Address',
-                  style: subTileTextStyle,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/logo.png',
+                  height: 80,
+                  width: 80,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: CommonTextField(
-                  controller: _emailETController,
-                  hintText: 'Email Address',
-                  textInputType: TextInputType.emailAddress,
-                  validator: (String? value) {
-                    const Text("Please Enter Email");
+                const SizedBox(
+                  height: 16,
+                ),
+                Text('Welcome Back', style: titleTextStyle),
+                const SizedBox(
+                  height: 4,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: Text(
+                    'Please Enter Your Email Address',
+                    style: subTileTextStyle,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 24),
+                  child: CommonTextField(
+                    controller: _emailETController,
+                    hintText: 'Email Address',
+                    textInputType: TextInputType.emailAddress,
+                    validator: (String? value) {
+                      if(value?.isEmpty ?? true){
+                        return 'Enter a valid email';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                authController.emailVerificationInProgress
+                    ? const CircularProgressIndicator()
+                    : CommonElevatedButton(
+                  title: 'NEXt',
+                  onTap: () async {
+                    if(_formKey.currentState!.validate()) {
+                      final bool response = await authController
+                          .emailVerification(_emailETController.text);
+                      if (response) {
+                        Get.to(const OTPVerificationScreen());
+                      } else {
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content:
+                              Text('Email Verification failed, try again'),
+                            ),
+                          );
+                        }
+                      }
+                    }
                   },
                 ),
-              ),
-              authController.emailVerificationInProgress
-                  ? CircularProgressIndicator()
-                  : CommonElevatedButton(
-                      title: 'NEXt',
-                      onTap: () async {
-                        final bool response = await authController
-                            .emailVerification(_emailETController.text);
-                        if (response) {
-                          Get.to(const OTPVerificationScreen());
-                        } else {
-                          if (mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content:
-                                    Text('Email Verification faile, try again'),
-                              ),
-                            );
-                          }
-                        }
-                      },
-                    ),
-            ],
+              ],
+            ),
           ),
         );
       }),
