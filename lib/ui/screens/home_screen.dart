@@ -1,4 +1,5 @@
 import 'package:ecommerce/ui/screens/email_verification_screen.dart';
+import 'package:ecommerce/ui/state_management/auth_controller.dart';
 import 'package:ecommerce/ui/state_management/bottom_navigation_bar_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import '../widgets/home/home_carousel_widget.dart';
 import '../widgets/home/remarks_title_widget.dart';
 import '../widgets/home/search_text_field.dart';
 import '../widgets/product_card_widgets.dart';
+import 'complete_profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,9 +27,15 @@ class HomeScreen extends StatelessWidget {
             AppBarIconButton(
               iconData: Icons.person,
               onTap: () {
-                Get.to(
-                  const EmailVerificationScreen(),
-                );
+                Get.find<AuthController>().isLoggedIn().then((value) {
+                  if (value) {
+                    Get.to(
+                      const CompleteProfileScreen(),
+                    );
+                  } else {
+                    Get.to(EmailVerificationScreen());
+                  }
+                });
               },
             ),
             AppBarIconButton(

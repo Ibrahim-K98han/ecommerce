@@ -1,3 +1,4 @@
+import 'package:ecommerce/ui/state_management/auth_controller.dart';
 import 'package:ecommerce/ui/state_management/bottom_navigation_bar_controller.dart';
 import 'package:ecommerce/ui/state_management/user_auth_controller.dart';
 import 'package:ecommerce/ui/utils/app_colors.dart';
@@ -53,5 +54,6 @@ class GetxBindings extends Bindings {
   void dependencies() {
     Get.put( BottomNavigationBarController());
     Get.put(UserAuthController());
+    Get.put(AuthController());
   }
 }
