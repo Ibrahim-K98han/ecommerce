@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../utils/app_colors.dart';
-import '../utils/styles.dart';
-import '../widgets/common_elevated_button.dart';
+import 'package:get/get.dart';
+
+import 'create_review_screen.dart';
 
 class ReviewScreen extends StatefulWidget {
   const ReviewScreen({Key? key}) : super(key: key);
@@ -71,7 +71,9 @@ class _ReviewScreenState extends State<ReviewScreen> {
                   SizedBox(
                     height: 50,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(const CreateReviewScreen());
+                      },
                       child: Container(
                         width: 56,
                         height: 56,
@@ -120,9 +122,10 @@ class ReviewTitleAndBody extends StatelessWidget {
           ],
         ),
         const Padding(
-          padding: EdgeInsets.only(top: 8, left: 16, bottom: 32),
+          padding: EdgeInsets.only(top: 8, left: 16, bottom: 32, right: 16),
           child: Text(
             '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.''',
+            textAlign: TextAlign.justify,
             style: TextStyle(
                 fontSize: 14,
                 color: softGreyColor,
