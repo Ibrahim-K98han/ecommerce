@@ -8,7 +8,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import '../utils/styles.dart';
 import '../widgets/common_elevated_button.dart';
 import '../widgets/commont_text_field.dart';
-import 'complete_profile_screen.dart';
+import 'profile_screen.dart';
 
 class OTPVerificationScreen extends StatefulWidget {
   final String email;

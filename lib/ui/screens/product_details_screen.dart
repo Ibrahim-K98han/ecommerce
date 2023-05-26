@@ -1,9 +1,9 @@
+import 'package:ecommerce/ui/screens/review_screen.dart';
 import 'package:ecommerce/ui/utils/app_colors.dart';
 import 'package:ecommerce/ui/utils/styles.dart';
 import 'package:ecommerce/ui/widgets/common_elevated_button.dart';
 import 'package:flutter/material.dart';
-import 'package:numberpicker/numberpicker.dart';
-
+import 'package:get/get.dart';
 import '../widgets/product_details/product_image_carousel.dart';
 import '../widgets/product_stepper.dart';
 
@@ -93,7 +93,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                         width: 8,
                                       ),
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Get.to(const ReviewScreen());
+                                        },
                                         child: Text(
                                           'Reviews',
                                           style: TextStyle(

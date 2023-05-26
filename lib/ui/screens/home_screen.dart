@@ -9,7 +9,7 @@ import '../widgets/home/home_carousel_widget.dart';
 import '../widgets/home/remarks_title_widget.dart';
 import '../widgets/home/search_text_field.dart';
 import '../widgets/product_card_widgets.dart';
-import 'complete_profile_screen.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -30,10 +30,10 @@ class HomeScreen extends StatelessWidget {
                 Get.find<AuthController>().isLoggedIn().then((value) {
                   if (value) {
                     Get.to(
-                      const CompleteProfileScreen(),
+                      const ProfileScreen(),
                     );
                   } else {
-                    Get.to(EmailVerificationScreen());
+                    Get.to(const EmailVerificationScreen());
                   }
                 });
               },

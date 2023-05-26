@@ -35,7 +35,7 @@ class UserAuthController extends GetxController {
     _otpVerificationInProgress = false;
     if (response.isSuccess) {
       await Get.find<AuthController>().saveToken(response.returnData);
-      Get.find<UserProfileController>().getProfileData();
+      //Get.find<UserProfileController>().getProfileData();
       update();
       return true;
     } else {
