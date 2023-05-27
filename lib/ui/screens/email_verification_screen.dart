@@ -57,7 +57,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                     hintText: 'Email Address',
                     textInputType: TextInputType.emailAddress,
                     validator: (String? value) {
-                      if(value?.isEmpty ?? true){
+                      if (value?.isEmpty ?? true) {
                         return 'Enter a valid email';
                       }
                       return null;
@@ -67,28 +67,30 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                 authController.emailVerificationInProgress
                     ? const CircularProgressIndicator()
                     : CommonElevatedButton(
-                  title: 'NEXt',
-                  onTap: () async {
-                    if(_formKey.currentState!.validate()) {
-                      final bool response = await authController
-                          .emailVerification(_emailETController.text);
-                      if (response) {
-                        Get.to(OTPVerificationScreen(
-                          email: _emailETController.text,
-                        ));
-                      } else {
-                        if (mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content:
-                              Text('Email Verification failed, try again'),
-                            ),
-                          );
-                        }
-                      }
-                    }
-                  },
-                ),
+                        title: 'Next',
+                        onTap: () async {
+                          if (_formKey.currentState!.validate()) {
+                            final bool response = await authController
+                                .emailVerification(_emailETController.text);
+                            if (response) {
+                              Get.to(
+                                OTPVerificationScreen(
+                                  email: _emailETController.text,
+                                ),
+                              );
+                            } else {
+                              if (mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                        'Email Verification failed, try again'),
+                                  ),
+                                );
+                              }
+                            }
+                          }
+                        },
+                      ),
               ],
             ),
           ),

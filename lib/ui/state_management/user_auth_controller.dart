@@ -13,7 +13,6 @@ class UserAuthController extends GetxController {
 
   Future<bool> emailVerification(String email) async {
     _emailVerificationInProgress = true;
-
     update();
     final response = await NetworkCaller.getRequest(url: '/UserLogin/$email');
     _emailVerificationInProgress = false;

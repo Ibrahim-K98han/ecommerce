@@ -88,6 +88,9 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                   widget.email, _otpETController.text);
                           if (response) {
                             Get.offAll(const HomeScreen());
+                          }
+                          if (response == false) {
+                            Get.offAll(const ProfileScreen());
                           } else {
                             Get.showSnackbar(
                               const GetSnackBar(
